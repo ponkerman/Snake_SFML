@@ -69,11 +69,14 @@ void MenuState::draw(sf::RenderWindow &window){
 //----------------PlayingState------------
 PlayingState::PlayingState(Game* game) 
 : GameState(game)
+, m_snake(START_LEN)
 {
-
+    
 }
 
 void PlayingState::applyPressed(){
+    
+
 
 }
 
@@ -86,7 +89,11 @@ void PlayingState::update(sf::Time delta){
 }
 
 void PlayingState::draw(sf::RenderWindow &window){
-
+    
+    for(int i = 0; i < 4; i++){
+        window.draw(m_snake.getSnake()[i]);
+        
+    }
 }
 //------------WonState------------
 WonState::WonState(Game* game) : GameState(game){

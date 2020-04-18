@@ -2,6 +2,7 @@
 #define GMAESTATE_H
 
 #include <SFML/Graphics.hpp>
+#include "snake.hpp"
 
 class Game;
 
@@ -41,6 +42,8 @@ private:
 
 //2-------Playing-------------------
 class PlayingState : public GameState{
+private:
+    Snake m_snake;
 public:
     PlayingState(Game *game);
     virtual void applyPressed();
