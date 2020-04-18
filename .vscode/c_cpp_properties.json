@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "F:/compilers/SFML_GCC7.3.0x64/SFML-2.5.1/include"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "F:/Visual Studio/VC/Tools/MSVC/14.24.28314/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c11",
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,61 @@
+{
+    "version": "2.0.0",
+
+    "tasks": [
+        {
+            "label": "Debug",
+            "type": "shell",
+            "command": "bash ./build.sh debug",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+				"$gcc"
+			]
+        },
+        {
+            "label": "Run",
+            "type": "shell",
+            "command": "bash ./build.sh launch",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": [
+				"$gcc"
+			]
+        },
+        {
+            "label": "Debug and Run",
+            "type": "shell",
+            "command": "bash ./build.sh debugNlaunch",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+				"$gcc"
+			]
+        },
+        //NA-----------------------------------------------------------------
+        {
+            "label": "Release NA",
+            "type": "shell",
+            "command": "F:/compilers/minGW64_old/mingw64/bin/g++.exe",
+            "args": [
+                "src/*",
+                "-o",
+                "bin/Release/snake.exe",
+                "-LF:/compilers/SFML_GCC7.3.0x64/SFML-2.5.1/lib",
+                "-IF:/compilers/SFML_GCC7.3.0x64/SFML-2.5.1/include",
+                "-lsfml-graphics-s",
+                "-lsfml-window-s",
+                "-lsfml-system-s",
+                "-lsfml-audio-s",
+                "-lsfml-network-s"
+            ],
+        }
+        //-------------------------------------------------------------------
+    ]
+}
