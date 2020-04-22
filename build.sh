@@ -51,6 +51,7 @@ launch() {
 }
 
 #main script ==============================================================================
+
 if [ "$1" == "debug" ]; then
     display_styled_symbol 0 " " "type: DEBUG"
 	build

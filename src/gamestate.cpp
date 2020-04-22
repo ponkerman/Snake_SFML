@@ -40,7 +40,7 @@ MenuState::MenuState(Game* game)
     }
     display_text = true;
     active_text = &m_text[0];
-    active_text->setColor(sf::Color::Green);
+    active_text->setFillColor(sf::Color::Green);
 }
 
 void MenuState::applyPressed(){
@@ -49,12 +49,12 @@ void MenuState::applyPressed(){
 }
 
 void MenuState::buttonPressed(sf::Vector2i dir){
-    active_text->setColor(sf::Color::White);
+    active_text->setFillColor(sf::Color::White);
     if(dir.y == 1 && active_text != &m_text.back()) 
         active_text += 1;
     if(dir.y == -1 && active_text != &m_text[0]) 
         active_text -= 1;
-    active_text->setColor(sf::Color::Green);    
+    active_text->setFillColor(sf::Color::Green);    
 }
 
 void MenuState::update(sf::Time delta){
@@ -69,7 +69,6 @@ void MenuState::draw(sf::RenderWindow &window){
 //----------------PlayingState------------
 PlayingState::PlayingState(Game* game) 
 : GameState(game)
-, m_snake(START_LEN)
 {
     
 }
@@ -90,10 +89,7 @@ void PlayingState::update(sf::Time delta){
 
 void PlayingState::draw(sf::RenderWindow &window){
     
-    for(int i = 0; i < 4; i++){
-        window.draw(m_snake.getSnake()[i]);
-        
-    }
+    window.draw(m_snake);
 }
 //------------WonState------------
 WonState::WonState(Game* game) : GameState(game){
