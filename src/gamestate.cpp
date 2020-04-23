@@ -58,7 +58,7 @@ void MenuState::buttonPressed(sf::Vector2i dir){
 }
 
 void MenuState::update(sf::Time delta){
-    return;
+    
 }
 
 void MenuState::draw(sf::RenderWindow &window){
@@ -80,16 +80,20 @@ void PlayingState::applyPressed(){
 }
 
 void PlayingState::buttonPressed(sf::Vector2i dir){
-
+    snake.setCurDir(dir);
 }
 
 void PlayingState::update(sf::Time delta){
+    
+    snake.update(delta);
+
 
 }
 
 void PlayingState::draw(sf::RenderWindow &window){
     
-    window.draw(m_snake);
+    window.draw(field);
+    window.draw(snake);
 }
 //------------WonState------------
 WonState::WonState(Game* game) : GameState(game){

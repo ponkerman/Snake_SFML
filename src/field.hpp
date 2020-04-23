@@ -8,8 +8,8 @@
 class Field : public sf::Drawable, public sf::Transformable
 {
 private:
-    sf::VertexArray map;
-
+    std::vector<std::vector<sf::RectangleShape>> map;
+    sf::Texture m_tileset;
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 public:
     Field();

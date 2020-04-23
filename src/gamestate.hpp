@@ -43,7 +43,8 @@ private:
 //2-------Playing-------------------
 class PlayingState : public GameState{
 private:
-    Snake m_snake;
+    Snake snake;
+    Field field;
 public:
     PlayingState(Game *game);
     virtual void applyPressed();
