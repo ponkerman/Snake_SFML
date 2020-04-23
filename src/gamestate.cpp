@@ -69,13 +69,14 @@ void MenuState::draw(sf::RenderWindow &window){
 //----------------PlayingState------------
 PlayingState::PlayingState(Game* game) 
 : GameState(game)
+, bonus(3, 3)
 {
     
 }
 
 void PlayingState::applyPressed(){
     
-
+    snake.expand();
 
 }
 
@@ -94,6 +95,7 @@ void PlayingState::draw(sf::RenderWindow &window){
     
     window.draw(field);
     window.draw(snake);
+    window.draw(bonus);
 }
 //------------WonState------------
 WonState::WonState(Game* game) : GameState(game){

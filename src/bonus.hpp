@@ -1,24 +1,20 @@
 #ifndef BONUS_H
 #define BONUS_H
 
-class Bonus
+#include "entity.hpp"
+
+class Bonus : public Entity 
 {
 private:
-    /* data */
+    sf::RectangleShape bonus;
+    sf::Texture bonus_texture;
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 public:
-    Bonus(/* args */);
+    Bonus(int, int);
+    void update(sf::Time delta);
+    void setCurPos(sf::Vector2i pos);
     ~Bonus();
 };
-
-Bonus::Bonus(/* args */)
-{
-    
-}
-
-Bonus::~Bonus()
-{
-
-}
 
 
 #endif

@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include "snake.hpp"
+#include "bonus.hpp"
+#include "field.hpp"
 
 class Game;
 
@@ -44,6 +46,7 @@ private:
 class PlayingState : public GameState{
 private:
     Snake snake;
+    Bonus bonus;
     Field field;
 public:
     PlayingState(Game *game);
