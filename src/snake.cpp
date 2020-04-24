@@ -20,12 +20,13 @@ Snake::Snake()
         snake[i].setPosition(UNIT_SIZE_P * HEIGHT_U / 2 - i * UNIT_SIZE_P, UNIT_SIZE_P * WIDTH_U / 2);
         snake[i].setTexture(&snake_texture);
     }
-
+    
     setSnake(snake, START_LEN);
 }
 
 void Snake::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     states.transform *= getTransform(); 
+    
     for(auto it : snake)
         target.draw(it, states);
 }
@@ -41,16 +42,18 @@ void Snake::move(sf::Vector2i dir){
 
 void Snake::update(sf::Time delta){
     //dout("PlayingState started snake update");
+    snake[0].setFillColor(sf::Color::Yellow);
     static sf::Time timeBuffer = sf::Time::Zero;
     timeBuffer += delta;
     while (timeBuffer >= sf::seconds(0.5))
     {
         if(checkBonus()) expand();
+        if(!checkBorder()) is_dead = true;
         move(curDir);
         timeBuffer -= sf::seconds(1);
     }
-    
-    //dout("PlayingState finished snake update");
+    snake[0].setFillColor(sf::Color::Blue);
+
 }
 
 void Snake::setCurDir(sf::Vector2i dir){
@@ -73,6 +76,14 @@ void Snake::expand(){
                              last->getPosition().y + oppositeDir(curDir).y);
     snake.back().setTexture(&snake_texture);
     setSnake(snake, snake.size());
+}
+
+bool Snake::isDead(){
+    return is_dead;
+}
+
+unsigned int Snake::getLen(){
+    return snake.size();
 }
 
 Snake::~Snake(){

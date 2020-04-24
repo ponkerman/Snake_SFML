@@ -3,7 +3,7 @@
 
 Game::Game() : m_window(sf::VideoMode(800,800), "SNAKE"){
 	
-    if(!m_font.loadFromFile("F:/Projects/snake_SFML/assets/source-code-pro.ttf"))
+    if(!m_font.loadFromFile("assets/source-code-pro.ttf"))
         throw std::runtime_error("font file not found");
     /*
     if(!m_logo.loadFromFile("assets/logo.png"))

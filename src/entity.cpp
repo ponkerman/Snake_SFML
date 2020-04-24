@@ -36,17 +36,23 @@ void Entity::setSnake(const std::vector<sf::CircleShape>& snake, int len){
 }
 
 bool Entity::checkBonus(){
-    if(snakeCoord.size() != 0){
-        dout("bonus Entity::checkBonus():", bonusCoord.x, bonusCoord.y );
-        dout("snake Entity::checkBonus():", snakeCoord[0].x, snakeCoord[0].y);
-        if(snakeCoord[0].x == (bonusCoord.x) && snakeCoord[0].y == (bonusCoord.y)){
-            isConsumed = true;
-            dout("found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            return true;
-        }
+    if(snakeCoord[0].x == (bonusCoord.x) && snakeCoord[0].y == (bonusCoord.y)){
+        isConsumed = true;
+        dout("found!");
+        return true;
     }
-    dout("checkBonus ended!");
     return false;
+}
+
+bool Entity::checkBorder(){
+    if( snakeCoord[0].x <= 0 || 
+        snakeCoord[0].y <= 0 ||
+        snakeCoord[0].x >= WIDTH_P ||
+        snakeCoord[0].y >= HEIGHT_P ) 
+    {
+        return false;
+    }
+    return true;
 }
 
 Entity::~Entity()

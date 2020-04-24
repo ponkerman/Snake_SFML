@@ -11,7 +11,7 @@ private:
     sf::Vector2i prevDir;
     sf::Vector2i curDir;
     sf::Vector2i oppositeDir(sf::Vector2i);
-    
+    bool is_dead;
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 public:
     Snake();
@@ -19,10 +19,11 @@ public:
     void update(sf::Time delta);
     void move(sf::Vector2i dir);
     void setCurDir(sf::Vector2i dir);
+    bool isDead();
+    unsigned int getLen();
     ~Snake();
 
 };
-//TODO: ограничить выход за пределы поля
-//TODO: раскрасить голову змеи
+
 
 #endif

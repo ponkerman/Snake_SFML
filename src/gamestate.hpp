@@ -17,7 +17,8 @@ public:
         Lost,
         Count
     };
-
+    static unsigned int record;
+    static unsigned int last_try;
     GameState(Game *game);
     Game* getGame() const;
     virtual void applyPressed() = 0;
@@ -54,6 +55,7 @@ public:
     void buttonPressed(sf::Vector2i dir);
     void update(sf::Time delta);
     void draw(sf::RenderWindow& window);
+    
 };
 
 //3--------------Won-----------------
@@ -74,5 +76,9 @@ public:
     void buttonPressed(sf::Vector2i dir);
     void update(sf::Time delta);
     void draw(sf::RenderWindow& window);
+private:
+    sf::Text m_last_try;
+    sf::Text m_record;
+    sf::Text m_continue;
 };
 #endif //GAMESTATE_H

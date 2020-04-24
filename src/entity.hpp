@@ -17,6 +17,7 @@ protected:
     void setBonus(const sf::RectangleShape&);
     void setSnake(const std::vector<sf::CircleShape>&, int);
     bool checkBonus();
+    bool checkBorder();
     ~Entity();
 
 };
