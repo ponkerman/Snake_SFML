@@ -1,5 +1,10 @@
 #include "snake.hpp"
+/*--------------------------*/
 #include <iostream>
+extern void dout();
+template <typename Head, typename... Tail>
+extern void dout(Head H, Tail... T);
+/*----------------------------*/
 
 Snake::Snake()
 : snake(START_LEN)
@@ -31,17 +36,21 @@ void Snake::move(sf::Vector2i dir){
 	snake.pop_back();
     sf::Vector2f pos = snake[0].getPosition();
 	snake[0].setPosition(sf::Vector2f(pos.x + dir.x * UNIT_SIZE_P, pos.y + dir.y * UNIT_SIZE_P));
+    setSnake(snake, snake.size());
 }
 
 void Snake::update(sf::Time delta){
+    //dout("PlayingState started snake update");
     static sf::Time timeBuffer = sf::Time::Zero;
     timeBuffer += delta;
     while (timeBuffer >= sf::seconds(0.5))
     {
+        if(checkBonus()) expand();
         move(curDir);
         timeBuffer -= sf::seconds(1);
     }
     
+    //dout("PlayingState finished snake update");
 }
 
 void Snake::setCurDir(sf::Vector2i dir){
@@ -63,7 +72,7 @@ void Snake::expand(){
     snake.back().setPosition(last->getPosition().x + oppositeDir(curDir).x, 
                              last->getPosition().y + oppositeDir(curDir).y);
     snake.back().setTexture(&snake_texture);
-    
+    setSnake(snake, snake.size());
 }
 
 Snake::~Snake(){

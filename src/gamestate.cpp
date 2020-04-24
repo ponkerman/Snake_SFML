@@ -2,8 +2,13 @@
 #include "game.hpp"
 #include <string>
 #include <sstream>
-#include <iostream>
 #include <algorithm>
+/*--------------------------*/
+#include <iostream>
+extern void dout();
+template <typename Head, typename... Tail>
+extern void dout(Head H, Tail... T);
+/*----------------------------*/
 
 /*
 template <class T> std::string to_string(T param){
@@ -69,9 +74,11 @@ void MenuState::draw(sf::RenderWindow &window){
 //----------------PlayingState------------
 PlayingState::PlayingState(Game* game) 
 : GameState(game)
-, bonus(3, 3)
+, bonus(8, 8)
+, snake()
 {
     
+    dout("PlayingState started");
 }
 
 void PlayingState::applyPressed(){
@@ -85,17 +92,19 @@ void PlayingState::buttonPressed(sf::Vector2i dir){
 }
 
 void PlayingState::update(sf::Time delta){
-    
+    //dout("PlayingState update: ", bonus.getBonus().x, bonus.getBonus().y);
     snake.update(delta);
-
+    bonus.update(delta);
+    //dout("PlayingState finished to update");
 
 }
 
 void PlayingState::draw(sf::RenderWindow &window){
     
     window.draw(field);
-    window.draw(snake);
     window.draw(bonus);
+    window.draw(snake);
+    
 }
 //------------WonState------------
 WonState::WonState(Game* game) : GameState(game){

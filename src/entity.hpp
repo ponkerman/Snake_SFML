@@ -7,25 +7,23 @@
 class Entity : public sf::Drawable, public sf::Transformable
 {
 private:
-    std::vector<sf::Vector2f> snakeCoord;
-    sf::Vector2f bonusCoord;
+    static std::vector<sf::Vector2f> snakeCoord;
+    static sf::Vector2f bonusCoord;
 protected:
     Entity();
+    static bool isConsumed;
     virtual void draw(sf::RenderTarget&, sf::RenderStates) const = 0;
     virtual void update(sf::Time) = 0;
     void setBonus(const sf::RectangleShape&);
     void setSnake(const std::vector<sf::CircleShape>&, int);
-    sf::Vector2f checkCollision();
+    bool checkBonus();
     ~Entity();
+
 };
 
 
 
-
-
-
-
-
+/////////////////////////////////////////////////
 
 
 #endif

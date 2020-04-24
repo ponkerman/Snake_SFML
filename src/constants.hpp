@@ -16,10 +16,5 @@
 
 using namespace std;
 
-struct unit{
-	int x;
-	int y;
-    sf::Color color;
-};
 
 #endif

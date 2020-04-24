@@ -1,7 +1,11 @@
 #include "bonus.hpp"
-
+/*--------------------------*/
+#include <iostream>
+extern void dout();
+template <typename Head, typename... Tail>
+extern void dout(Head H, Tail... T);
+/*----------------------------*/
 Bonus::Bonus(int x, int y)
-
 {
     
     if(!bonus_texture.loadFromFile("assets/bonus_texture.png"))
@@ -19,15 +23,19 @@ void Bonus::draw(sf::RenderTarget& target, sf::RenderStates states) const{
 }
 
 void Bonus::update(sf::Time delta){
-    /*
-    static sf::Time timeBuffer = sf::Time::Zero;
-    timeBuffer += delta;
-    while (timeBuffer >= sf::seconds(0.5))
-    {
-        
-        timeBuffer -= sf::seconds(1);
+    
+    //setBonus(bonus);
+    if(isConsumed) {
+        moveBonus();
+        isConsumed = false;
     }
-    */
+}
+
+void Bonus::moveBonus(){
+    dout("PlayingState started moving bonus");
+    bonus.setPosition(UNIT_SIZE_P * (std::rand() % WIDTH_U), UNIT_SIZE_P * (std::rand() % HEIGHT_U));
+    setBonus(bonus);
+    
 }
 
 Bonus::~Bonus()

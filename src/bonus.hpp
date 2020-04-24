@@ -8,6 +8,7 @@ class Bonus : public Entity
 private:
     sf::RectangleShape bonus;
     sf::Texture bonus_texture;
+    void moveBonus();
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 public:
     Bonus(int, int);
